@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <link href="new 3_stil - Copy.css" rel="stylesheet" type="text/css">
+          <meta charset="UTF-8">
+     </head>
+     <body>
+          <div id="header">
+  	         <p class="p1">Contact</p>
+	          <div class="dropdown">
+              <button onmouseenter="myFunction()" title="Menu bar" class="dropbtn">Menu</button>
+               <div id="myDropdown" class="dropdown-content">
+                <a title="Home page" href="Index.html" id="#home">SmartEnvironment</a>
+                <a title="Project information" href="About the project.html" id="#about">About the project</a>
+                <a title="Map application" href="Map.html" id="#contact">Map</a>
+               </div>
+              </div>
+          </div>
+		  <div class="fixed-bg1"></div>
+          <div id="kutija"></div>
+           <div id="about1">
+		    <div id="container">
+		     <h2 class="text">Contact section</h2>
+              <p class="text">For any query or information please fill the form below and submit. Our team will respond to it as soon as possible!.</p>
+			  <form style="padding: 0px 35px 25px 25px;" action="/action_page.php" class="text">
+			   <fieldset style="padding: 15px 25px 15px 25px;" >
+                 You are:<input type="radio" name="person" value="Stakeholder"> Stakeholder
+                 <input type="radio" name="person" value="volunteer" checked> Volunteer<br><br>
+				  First name: <input type="text" name="firstname" class="text">
+                  Last name: <input type="text" name="lastname" class="text">
+                 <br><br>
+				  E-mail: <input type="email" name="email" class="text">
+				  Date: <input type="date" name="date" class="text">
+				  Select a file: <input type="file" name="myFile" class="text">
+				 <br><br>
+				  Type a message:<br><br>
+				 <textarea name="message" rows="7" cols="118" class="text"></textarea>
+                 <br><br>
+               <input type="submit" title="Submit query" value="Submit" class="button">
+			   <input type="reset"title="Reset fields" value="Reset" class="button">
+             </fieldset>
+           </form>
+		   </div>
+          </div>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script>
+/* 
+When click on header´s tags
+function myFunction() {
+	var link = window.open("SmartEnvironment.html", "_self");
+}
+function myFunction1() {
+    var link = window.open("Map.html", "_self");
+}
+*/
+// When the user scrolls down show the button
+window.onscroll = function() {scrollFunction()};
+function scrollFunction() {
+    if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+        document.getElementById("myBtn").style.display = "block";
+    } else {
+        document.getElementById("myBtn").style.display = "none";
+    }
+}
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+/* MENUU When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onmouseenter = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+		
+     </body>
+</html>

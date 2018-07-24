@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <link href="new 3_stil - Copy.css" rel="stylesheet" type="text/css">
+          <meta charset="UTF-8">
+     </head>
+     <body>
+          <div id="header">
+  	        <p class="p1">SmartEnvironment</p>
+	         <div class="dropdown">
+              <button onmouseenter="myFunction()" title="Menu bar" class="dropbtn">Menu</button>
+               <div id="myDropdown" class="dropdown-content">
+                <a title="Project information" href="About the project.html" id="#about">About the project</a>
+                <a title="Contact section" href="Contact.html" id="#contact">Contact</a>
+				<a title="Map application" href="Map.html" id="#contact">Map</a>
+               </div>
+             </div>
+          </div>
+          <div class="fixed-bg"> 
+          </div>
+          <div id="kutija"><h1>Svi za jednoga jedan za sve!</h1>
+		  </div>
+		  <div id="about"></div>
+          <div id="video">
+		   <div class="content">
+		    <iframe width="700" height="450" src="https://www.youtube.com/embed/lQbRNl-_7v4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+			</iframe>
+           </div>
+          </div>
+		
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script>
+/*
+When click on header´s tags
+function myFunction() {
+    var link = window.open("About project.html", "_self");
+}
+function myFunction1() {
+    var link = window.open("Map.html", "_self");
+}
+*/
+// When the user scrolls down show the button
+window.onscroll = function() {scrollFunction()};
+function scrollFunction() {
+    if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+        document.getElementById("myBtn").style.display = "block";
+    } else {
+        document.getElementById("myBtn").style.display = "none";
+    }
+}
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+/* MENUU When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onmouseenter = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+} 
+</script>
+		
+     </body>
+</html>

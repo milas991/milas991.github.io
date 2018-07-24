@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <link href="new 3_stil - Copy.css" rel="stylesheet" type="text/css">
+		  <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+		  <script type="text/javascript"src="http://maps.google.com/maps/api/js?sensor=false&v=3.22&key=AIzaSyAUlW2SlWa0fW6G4CIhvxReAKxaoJ4rO5Q"></script>
+		  <script type="text/JavaScript"></script>
+          <meta charset="UTF-8">
+<script>
+
+// When the user scrolls show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+        document.getElementById("myBtn").style.display = "block";
+    } else {
+        document.getElementById("myBtn").style.display = "none";
+    }
+}
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+  /* MENUU When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onmouseenter = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+} 
+
+//Map	  
+   var map;
+function initMap() {
+//initialise variables
+var osmlayer;
+var google_terrain;
+var point;
+var hs_conservation_wms;
+var hs_conservation_wfs;
+//create new map object
+map = new OpenLayers.Map("map");
+//create new OSM base layer
+osmlayer = new OpenLayers.Layer.OSM("Open Street Map");
+google_terrain = new OpenLayers.Layer.Google("Google Terrain Map", {
+ type: google.maps.MapTypeId.TERRAIN,
+ numZoomLevels: 22
+ });
+//create WMS layers
+
+hs_conservation_wms = new OpenLayers.Layer.WMS("Conservation Areas (WMS)",
+"http://35.163.142.53:8080/geoserver/egm715/wms",
+{
+layers: "egm715:landfills",
+transparent: true
+}, {
+projection: "EPSG:3857",
+opacity: 0.5,
+visibility: false
+}
+);
+//create WFS layers
+hs_conservation_wfs = new OpenLayers.Layer.Vector("Conservation Areas (WFS)",
+{
+strategies:[new OpenLayers.Strategy.BBOX()],
+protocol: new OpenLayers.Protocol.WFS(
+{
+version: "1.1.0",
+url: "http://35.163.142.53:8080/geoserver/wfs",
+featureType: "landfills",
+featurePrefix: "egm715",
+featureNS: "http://geoserver.org/egm715",
+}
+),
+visibility: false,
+}
+);
+//add layers to the map
+map.addLayers([osmlayer, google_terrain, hs_conservation_wms, hs_conservation_wfs]);
+//add LayerSwitcher control object
+map.addControl(new OpenLayers.Control.LayerSwitcher());
+// define point as a new LonLat object and transfom
+point = new OpenLayers.LonLat(-6.247284, 54.573223);
+point.transform("EPSG:4326", "EPSG:3857");
+//centre the map and set zoom level
+map.setCenter(point, 7.5);
+}
+
+
+</script>
+     </head>
+     <body onload="initMap()">
+          <div id="header">
+  	        <p class="p1">Map</p>
+	         <div class="dropdown">
+              <button onmouseenter="myFunction()" title="Menu bar" class="dropbtn">Menu</button>
+               <div id="myDropdown" class="dropdown-content">
+                <a title="Home page" href="Index.html" id="#home">SmartEnvironment</a>
+                <a title="Project information" href="About the project.html" id="#about">About the project</a>
+                <a title="Contact section" href="Contact.html" id="#contact">Contact</a>
+               </div>
+             </div>
+          </div>
+		  <div id="kutija1"></div>
+
+          <div id="about2">
+		   <div id="container">
+		    <div id="map">
+             <!-- Section of html document which will display your map -->
+		    </div>
+		   </div>
+          </div>
+		  
+
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+
+		
+     </body>
+</html>
